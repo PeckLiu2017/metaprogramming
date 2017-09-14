@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+p "step 4"
 require 'pathname'
 require 'fileutils'
 include FileUtils

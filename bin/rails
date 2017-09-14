@@ -1,9 +1,15 @@
 #!/usr/bin/env ruby
 begin
   load File.expand_path('../spring', __FILE__)
+  # p "#{File.expand_path('../spring', __FILE__)} ========= step 2"
+  # p "#{File.expand_path('../spring', __dir__)}" #=> /Users/peckliu/Ruby project/metaprogramming/spring
+  # File.expand_path有dir参数就从当前文件开始解析，没有dir参数就从当前文件的下一级开始解析。
+  #load "/Users/peckliu/Ruby project/metaprogramming/bin/spring ========= step 2"
 rescue LoadError => e
   raise unless e.message.include?('spring')
 end
 APP_PATH = File.expand_path('../config/application', __dir__)
+# p "#{File.expand_path('../config/application', __dir__)} ========= step 2"
+# 其中 APP_PATH 常量稍后将在 rails/commands 中使用。所加载的 config/boot 是应用中的 config/boot.rb 文件，用于加载并设置 Bundler。
 require_relative '../config/boot'
 require 'rails/commands'

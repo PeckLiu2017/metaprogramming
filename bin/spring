@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+# p "step 5"
 # This file loads spring without using Bundler, in order to be fast.
 # It gets overwritten when you run the `spring binstub` command.
 
@@ -8,7 +8,9 @@ unless defined?(Spring)
   require 'bundler'
 
   lockfile = Bundler::LockfileParser.new(Bundler.default_lockfile.read)
+  # p "#{Bundler::LockfileParser.new(Bundler.default_lockfile.read)}"
   spring = lockfile.specs.detect { |spec| spec.name == "spring" }
+  # p "#{spring}"
   if spring
     Gem.use_paths Gem.dir, Bundler.bundle_path.to_s, *Gem.path
     gem 'spring', spring.version
